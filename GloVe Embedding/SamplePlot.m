@@ -1,0 +1,1 @@
+plot(distance_coords, distance_coordsGloVe, 'm.', 'MarkerSize', 25);

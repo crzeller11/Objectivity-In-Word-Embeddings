@@ -1,0 +1,34 @@
+% Test out GloVe Word Embedding with simple analogies
+
+
+% Simple function to display the model's ability to complete analogies
+% Also includes instances of bias
+%'Boy is to girl as brother is to...');
+d = complete_analogy(NormalizedWordVecs, Word2Index, 'boy', 'girl', 'brother');
+disp(char(WordList(d)));
+
+%'Man is to woman as grandfather is to...');
+%'White is to black as up is to...');
+%'Man is to doctor as woman is to...');
+%'Woman is to doctor as man is to...');
+
+
+
+disp('Man is to woman as grandfather is to...');
+a = CompleteGloVeAnalogy(emb, 'man', 'woman', 'grandfather')
+
+man = word2vec(emb,"her");
+woman = word2vec(emb,"him");
+king = word2vec(emb,"man");
+word = vec2word(emb,king - man + woman);
+disp(word)
+
+% Exampe to show that the dot product between cat and dog is larger than
+% that between cat and cow. 
+cat = word2vec(emb, 'man');
+dog = word2vec(emb, 'woman');
+cow = word2vec(emb, 'programmer');
+cat_dog = dot(cat, dog);
+cat_cow = dot(cat, cow);
+disp(cat_dog)
+disp(cat_cow)
